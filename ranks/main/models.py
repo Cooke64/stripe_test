@@ -13,6 +13,7 @@ class Item (models.Model):
         'Валюта',
         choices=CURRENCY,
         default='ru',
+        max_length=3
     )
 
     class Meta:

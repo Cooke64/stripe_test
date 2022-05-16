@@ -4,7 +4,7 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
-from ranks.main.services import get_sessions, get_item
+from main.services import get_sessions, get_item
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
@@ -21,7 +21,7 @@ def buy_item(id: int) -> JsonResponse:
     """Получаем информацию о товаре по его id."""
     item = get_item(id)
     session = get_sessions(item)
-    return JsonResponse({'session_id': session.id})
+    return JsonResponse({'session': session.id})
 
 
 def get_item_detail(request, id: int):
