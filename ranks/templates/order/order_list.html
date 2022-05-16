@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block title %} Заказы{% endblock %}
+{% block content %}
+<h1>Список заказов</h1>
+{% for item in order %}
+{{ item }}
+{% endfor %}
+{% endblock %}
