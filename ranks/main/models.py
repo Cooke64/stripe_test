@@ -3,16 +3,16 @@ from django.db import models
 
 class Item (models.Model):
     CURRENCY = (
-        ('ru', 'RUB'),
+        ('eur', 'EUR'),
         ('usd', 'USD'),
     )
     name = models.CharField('Название', max_length=250)
-    description = models.TextField('Описание',blank=True)
-    price = models.DecimalField('Цена', max_digits=10, decimal_places=2)
+    description = models.TextField('Описание', blank=True)
+    price = models.IntegerField('Цена')
     currency = models.CharField(
         'Валюта',
         choices=CURRENCY,
-        default='ru',
+        default='eur',
         max_length=3
     )
 
