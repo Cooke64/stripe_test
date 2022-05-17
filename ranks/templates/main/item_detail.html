@@ -1,10 +1,10 @@
 {% extends 'base.html' %}
 {% block title %} {{ item.name }}{% endblock %}
 {% block content %}
-  {% for item in items %}
-    {{ item }}
-  {% endfor %}
-<form action="">
+    {{ item.name }}
+  {{ item.price }}
+{{ STRIPE_PUBLIC_KEY }}
+<form action="" method="POST">
   {% csrf_token %}
   <button id="checkout-button">Купить!</button>
 </form>
@@ -14,7 +14,7 @@
     let checkoutButton = document.getElementById("checkout-button");
 
     checkoutButton.addEventListener("click", function () {
-      fetch("{% url 'create_session' item.id %}", {
+      fetch("{% url 'buy_item' item.id %}", {
         method: "POST",
         headers: {
             'X-CSRFToken': csrf
